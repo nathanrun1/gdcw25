@@ -18,7 +18,10 @@ public abstract class Destroyable : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        Debug.Log(currentHealth);
+        Debug.Log(damage);
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+        Debug.Log(currentHealth);
         OnDamaged?.Invoke(damage);
 
         if (currentHealth == 0)

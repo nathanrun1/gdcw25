@@ -25,11 +25,14 @@ public class GridManager : MonoSingleton<GridManager>
 {
     public GridConfig gridConfig;
     public Dictionary<Vector2Int, GridSquare> gridData = new Dictionary<Vector2Int, GridSquare>();
-    
+
+    [SerializeField] private SpriteRenderer _gridVisualizerRenderer;
 
     public override void Init()
     {
         Debug.Log(WorldToGridPos(15.4f, 27.1f));
+        _gridVisualizerRenderer.material.SetFloat("_GridSize", gridConfig.gridSquareSize);
+        _gridVisualizerRenderer.gameObject.SetActive(true);
     }
 
     /// <summary>

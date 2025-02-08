@@ -15,11 +15,17 @@ public class Player_Axe : MonoBehaviour
     [SerializeField] private float _axeVisualizerTime = 0.2f;
     private LineRenderer _hitboxLineRenderer;
     [Header("Axe config")]
-    [SerializeField] private float _axeDamage; // Potentially changed in future for multiple axes
+    [SerializeField] private float _axeDamage = 10f; // Potentially changed in future for multiple axes
+    /// <summary>
+    /// Cooldown between axe swings
+    /// </summary>
+    [SerializeField] private float _axeCooldown = 0.5f; 
 
     private SpriteRenderer _axeSprite;
     private BoxCollider2D _axeCollider;
     private PlayerInput _input;
+
+    private bool _isCooldown = false;
 
     private void Start()
     {
@@ -35,12 +41,18 @@ public class Player_Axe : MonoBehaviour
         GameManager.Instance.playerInput.Player.Fire.started += OnAxeSwing;
     }
 
+    /// <summary>
+    /// Executes axe swing (starting point)
+    /// </summary>
     private void OnAxeSwing(InputAction.CallbackContext context)
     {
+        if (_isCooldown) return;
+        StartCoroutine(SwingCooldown(_axeCooldown));
         StartCoroutine(AxeSwingAnim());
         Collider2D[] hitList = AxeDetectHit();
         foreach (Collider2D hit in hitList)
         {
+            // Check if hit is destroyable, if so take damage
             Destroyable destroyableComp = hit.gameObject.GetComponent<Destroyable>();
             if (destroyableComp != null)
             {
@@ -80,6 +92,16 @@ public class Player_Axe : MonoBehaviour
         if (_visualizerEnabled) StartCoroutine(VisualizeAxeHitbox(cornerA, cornerB));
 
         return hitList;
+    }
+
+    /// <summary>
+    /// Prevents axe swing for given amount of seconds
+    /// </summary>
+    private IEnumerator SwingCooldown(float seconds)
+    {
+        _isCooldown = true;
+        yield return new WaitForSeconds(seconds);
+        _isCooldown = false;
     }
 
     private IEnumerator VisualizeAxeHitbox(Vector3 cornerA, Vector3 cornerB)
