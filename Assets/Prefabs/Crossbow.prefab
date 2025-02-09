@@ -136,8 +136,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f62fc58e918043f19fd188903938d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
-  iceDrillPrefab: {fileID: 2404866660457141567, guid: 78d45cd1b724c415a8071507a275ef8c, type: 3}
+  arrowPrefab: {fileID: 6724842884880693141, guid: ee1d4391c3b404764b393fcc09545ea7, type: 3}
+  range: 10
+  iceDrillPrefab: {fileID: 4299358745148650131, guid: 78d45cd1b724c415a8071507a275ef8c, type: 3}
+  damage: 50
+  coolDown: 0.5
 --- !u!1001 &5390623247443565780
 PrefabInstance:
   m_ObjectHideFlags: 0
