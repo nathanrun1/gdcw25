@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 
 
-public class script : MonoBehaviour
+public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField] private int playerSafeZoneRadius;
     [SerializeField] private int spawnZoneWidth;
