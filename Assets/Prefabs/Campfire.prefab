@@ -627,3 +627,6 @@ MonoBehaviour:
   _maxLightIntensity: 1.5
   _campfireLight: {fileID: 8242409359451667688}
   _timePerWood: 7
+  _campfireLevel1Temp: 5
+  _campfireLevel2Temp: 5
+  _campfireLevel3Temp: 5

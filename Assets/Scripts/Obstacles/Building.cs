@@ -12,14 +12,13 @@ public abstract class Building : Obstacle
 
     public virtual float FunctionalTemperature { get => 10f; }
     public virtual float IntegrityTemperature { get => -10f; }
-    public virtual float TempChangeRate { get => 2f; }
+    public virtual float TempChangeRate { get => 0.1f; }
 
     public bool isFunctional = true;
 
     protected virtual void Awake()
     {
         curTemperature = StartingTemperature;
-        Debug.Log("temp" + StartingTemperature);
     }
 
     protected virtual void FixedUpdate()
@@ -33,7 +32,9 @@ public abstract class Building : Obstacle
     {
         float surroundTemp = GridManager.Instance.GetGridSquareAt(pos).Temperature;
         float diff = surroundTemp - curTemperature;
-
-        curTemperature += Mathf.Sqrt(diff) * TempChangeRate;
+        //Debug.Log("updating: " + curTemperature + ", diff: " + diff);
+        //Debug.Log("change: " + Mathf.Sqrt(Mathf.Abs(diff)) * 0.1f * TempChangeRate * Mathf.Sign(diff));
+        curTemperature += Mathf.Sqrt(Mathf.Abs(diff)) * 0.1f * TempChangeRate * Mathf.Sign(diff);
+        //Debug.Log("updated: " + curTemperature);
     }
 }

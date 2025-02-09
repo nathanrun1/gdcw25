@@ -70,6 +70,77 @@ public class GridManager : MonoSingleton<GridManager>
         }
     }
 
+    public static List<Vector2Int> GetCircleCoordinatesOptimized(Vector2Int center, int radius)
+    {
+        List<Vector2Int> coordinates = new List<Vector2Int>();
+        int h = center.x;
+        int k = center.y;
+        int rSquared = radius * radius;
+
+        for (int x = h - radius; x <= h + radius; x++)
+        {
+            int dx = x - h;
+            int dxSquared = dx * dx;
+
+            if (dxSquared > rSquared) continue;
+
+            int dyMax = Mathf.FloorToInt(Mathf.Sqrt(rSquared - dxSquared));
+            for (int y = k - dyMax; y <= k + dyMax; y++)
+            {
+                coordinates.Add(new Vector2Int(x, y));
+            }
+        }
+
+        return coordinates;
+    }
+
+    // Returns the perimeter coordinates of a circle on a grid
+    public static List<Vector2Int> GetPerimeterCoordinates(Vector2Int center, int radius)
+    {
+        HashSet<Vector2Int> perimeterPoints = new HashSet<Vector2Int>();
+        int x = 0;
+        int y = radius;
+        int d = 1 - radius; // Decision parameter
+
+        // Midpoint Circle Algorithm
+        while (x <= y)
+        {
+            // Add points for all 8 octants
+            AddOctantPoints(center.x, center.y, x, y, perimeterPoints);
+
+            if (d < 0)
+            {
+                d += 2 * x + 3; // Move east
+            }
+            else
+            {
+                d += 2 * (x - y) + 5; // Move southeast
+                y--;
+            }
+            x++;
+        }
+
+        return new List<Vector2Int>(perimeterPoints);
+    }
+
+    // Add points for all 8 octants (symmetry)
+    private static void AddOctantPoints(int h, int k, int x, int y, HashSet<Vector2Int> points)
+    {
+        AddPoint(h + x, k + y, points);
+        AddPoint(h - x, k + y, points);
+        AddPoint(h + x, k - y, points);
+        AddPoint(h - x, k - y, points);
+        AddPoint(h + y, k + x, points);
+        AddPoint(h - y, k + x, points);
+        AddPoint(h + y, k - x, points);
+        AddPoint(h - y, k - x, points);
+    }
+
+    private static void AddPoint(int x, int y, HashSet<Vector2Int> points)
+    {
+        points.Add(new Vector2Int(x, y));
+    }
+
     /// <summary>
     /// Returns grid square data at specified grid position
     /// </summary>
