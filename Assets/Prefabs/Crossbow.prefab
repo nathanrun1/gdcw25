@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1497186597694243103}
   - component: {fileID: 5035817994984115522}
   - component: {fileID: 3901009777238754349}
+  - component: {fileID: -5612843362110565572}
+  - component: {fileID: -4970148382563133061}
   m_Layer: 0
   m_Name: Crossbow
   m_TagString: Untagged
@@ -107,6 +109,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &-5612843362110565572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882275838313099754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!114 &-4970148382563133061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882275838313099754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f62fc58e918043f19fd188903938d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 3
+  iceDrillPrefab: {fileID: 2404866660457141567, guid: 78d45cd1b724c415a8071507a275ef8c, type: 3}
 --- !u!1001 &5390623247443565780
 PrefabInstance:
   m_ObjectHideFlags: 0

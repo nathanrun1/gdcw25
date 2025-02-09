@@ -47,7 +47,10 @@ public class SpawnEnemy : MonoBehaviour
              + new Vector2(Mathf.Cos(degree)*distance, Mathf.Sin(degree)*distance);
         } while (!checkPosValidity(spawnPosition));
 
-        Instantiate(enemyType, spawnPosition, Quaternion.identity);
+        GameObject newEnemy = (GameObject)PrefabUtility.InstantiatePrefab(enemyType);
+        newEnemy.transform.position = spawnPosition;
+        newEnemy.transform.rotation = Quaternion.identity;
+        // Instantiate(enemyType, spawnPosition, Quaternion.identity);
     }
 
 
