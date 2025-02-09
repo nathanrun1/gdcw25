@@ -62,7 +62,7 @@ public class GridManager : MonoSingleton<GridManager>
                 Vector2Int pos = new Vector2Int(x, y);
                 GridSquare data = new GridSquare();
                 // temporary
-                data.temperatureDelta = UnityEngine.Random.Range(-50f, 50f);
+                data.temperatureDelta = 0;
                 // --
                 if (!gridData.ContainsKey(pos)) 
                     gridData.Add(pos, data);

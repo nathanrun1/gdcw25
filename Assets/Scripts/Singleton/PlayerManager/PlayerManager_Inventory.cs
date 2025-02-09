@@ -20,6 +20,7 @@ public partial class PlayerManager : MonoSingleton<PlayerManager>
     public int carryCapacity = 20;
     [SerializeField] private TextMeshProUGUI _woodCount;
     [SerializeField] private TextMeshProUGUI _metalCount;
+    [SerializeField] private TextMeshProUGUI _totalCount;
     [SerializeField] private ResourceGain _rscGainUIPrefab;
     [SerializeField] private Canvas _mainCanvas;
     [SerializeField] private int _startingWoodAmnt = 0;
@@ -63,6 +64,7 @@ public partial class PlayerManager : MonoSingleton<PlayerManager>
     {
         if (!_rscTypeToUICount.ContainsKey(rsc)) return;
         _rscTypeToUICount[rsc].text = _inventory[rsc].ToString();
+        _totalCount.text = $"{Inventory_GetTotalCarried()}/{carryCapacity}";
     }
 
     public int Inventory_GetResourceCount(ResourceType rsc)

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2589151562881064669}
   - component: {fileID: -8381633508457590673}
   - component: {fileID: 4648104827806437940}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pile
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   rsc: 0
   dropAmnt: 0
   _woodSprite: {fileID: 21300000, guid: fef07dba8b3ff184e9f892b5a86950e2, type: 3}
-  _metalSprite: {fileID: 21300000, guid: 355c6543566bee24ca9d24116c4f839a, type: 3}
+  _metalSprite: {fileID: 21300000, guid: 7e4ddf285beb84cb99e236fb4ced0225, type: 3}
   sr: {fileID: 2589151562881064669}
 --- !u!61 &4648104827806437940
 BoxCollider2D:
@@ -115,7 +115,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 247

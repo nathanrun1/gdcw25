@@ -9,8 +9,8 @@ public class PileCtrl : MonoBehaviour
 {
     private Queue<object> _pickupQueue = new Queue<object>();
 
-    [SerializeField] private ResourceType rsc;
-    [SerializeField] private int dropAmnt;
+    [SerializeField] public ResourceType rsc;
+    [SerializeField] public int dropAmnt;
 
     [SerializeField] private Sprite _woodSprite;
     [SerializeField] private Sprite _metalSprite;

@@ -8,11 +8,11 @@ public abstract class Obstacle : MonoBehaviour
     /// <summary>
     /// Id of this obstacle type
     /// </summary>
-    [ReadOnly] public int id;
+    [HideInInspector] public int id;
     /// <summary>
     /// Grid position of this obstacle
     /// </summary>
-    [ReadOnly] public Vector2Int pos;
+    [HideInInspector] public Vector2Int pos;
 
     public event Action OnDestroyed;
 
