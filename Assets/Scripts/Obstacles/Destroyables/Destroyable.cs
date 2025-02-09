@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Destroyable : MonoBehaviour
+/// <summary>
+/// Obstacles that can be destroyed using the player's axe
+/// </summary>
+public abstract class Destroyable : Obstacle
 {
     public virtual float maxHealth => 100f;
-    public float currentHealth;
+    [ReadOnly] public float currentHealth;
 
     public event Action<float> OnDamaged;
-    public event Action OnDestroyed;
 
     protected virtual void Awake()
     {
@@ -18,24 +20,12 @@ public abstract class Destroyable : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        Debug.Log(currentHealth);
-        Debug.Log(damage);
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-        Debug.Log(currentHealth);
         OnDamaged?.Invoke(damage);
 
         if (currentHealth == 0)
         {
-            DestroyObject();
+            ObstacleManager.Instance.RemoveObstacleAt(pos);
         }
     }
-
-    public virtual void DestroyObject()
-    {
-        OnDestroyed?.Invoke();
-
-        // destroy anim?
-        Destroy(gameObject);
-    }
-
 }

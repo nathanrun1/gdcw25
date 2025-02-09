@@ -19,8 +19,20 @@ public class GameManager : MonoSingleton<GameManager>
         ambientTemperature = gameConfig.initialAmbientTemperature;
 
         InitPlayerInput();
-        Debug.Log(GridManager.Instance);
-        GridManager.Instance.GenerateGrid(new Vector2Int(0, 0), 100);
+        StartCoroutine(WaitForGridManager());
+    }
+
+    private IEnumerator WaitForGridManager()
+    {
+        while (!GridManager.IsInitialized)
+        {
+            yield return null;
+        }
+
+        for (int i = 0; i < 40; ++i)
+        {
+            ObstacleManager.Instance.PlaceObstacleAt(new Vector2Int(UnityEngine.Random.Range(-20, 20), UnityEngine.Random.Range(-20, 20)), 0);
+        }
     }
 
     private void InitPlayerInput()
