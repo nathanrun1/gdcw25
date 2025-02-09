@@ -7,6 +7,7 @@ public partial class PlayerManager : MonoSingleton<PlayerManager>
 {
     [ReadOnly]
     public float PlayerTemperature = 25f;
+    [SerializeField] GameObject gameStateMonitor;
 
     public float GetTemperatureRateOfChange()
     {
@@ -30,5 +31,6 @@ public partial class PlayerManager : MonoSingleton<PlayerManager>
         float minTemp = playerConfig.playerDeathTemperature;
         float maxTemp = playerConfig.playerMaxTemperature;
         PlayerTemperature = Mathf.Clamp( PlayerTemperature + GetTemperatureRateOfChange() * deltaTime, minTemp, maxTemp);
+        gameStateMonitor.GetComponent<GameStateMonitor>().setPlayerHealth(PlayerTemperature);
     }
 }

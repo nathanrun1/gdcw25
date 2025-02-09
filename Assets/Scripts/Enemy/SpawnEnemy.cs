@@ -17,6 +17,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private GameObject campfirePrefab;
     [SerializeField] private GameObject crossbowPrefab;
     [SerializeField] private GameObject snowGenerator;
+    [SerializeField] private GameObject gameStateMonitor;
 
     // key is wave length, value is the number of enemies spawns
     private Dictionary<int, Tuple<float, int>> spawnWaveInfo = new Dictionary<int, Tuple<float, int>>();
@@ -32,6 +33,7 @@ public class SpawnEnemy : MonoBehaviour
         spawnWaveInfo.Add(3, new Tuple<float, int>(60f, 35));
         spawnWaveInfo.Add(4, new Tuple<float, int>(60f, 65));
         spawnWaveInfo.Add(5, new Tuple<float, int>(60f, 100));
+
 
 
 
@@ -56,6 +58,7 @@ public class SpawnEnemy : MonoBehaviour
 
 
             waveNumber += 1;
+            gameStateMonitor.GetComponent<GameStateMonitor>().setWaveCounter(waveNumber);
             snowGenerator.GetComponent<SnowGenerator>().updateEmission(waveNumber * 20);
             if (waveNumber == 5) {
                 Destroy(gameObject);

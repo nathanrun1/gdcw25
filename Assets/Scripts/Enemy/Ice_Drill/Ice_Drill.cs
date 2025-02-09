@@ -45,7 +45,6 @@ public class Ice_Drill : MonoBehaviour
         hp -= damage;
 
         Debug.Log(hp);
-        // TODO: flash red
         gameObject.GetComponent<SpriteRenderer>().color = Color.red;
         StartCoroutine(whitecolor());
 
