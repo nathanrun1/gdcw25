@@ -58,6 +58,7 @@ public class Arrow : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider) {
         if (collider.gameObject == targetedEnemy.gameObject) {
             collider.gameObject.GetComponent<Ice_Drill>().takeDamage(damage);
+
             Destroy(gameObject);
         }
 

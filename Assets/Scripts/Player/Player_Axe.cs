@@ -59,6 +59,21 @@ public class Player_Axe : MonoBehaviour
                 destroyableComp.TakeDamage(_axeDamage);
             }
         }
+
+
+        Collider2D[] enemyHitList = AxeDetectEnemyHit();
+        foreach (Collider2D hit in enemyHitList)
+        {
+            // assign damage to enemies
+            Ice_Drill iceDrill = hit.gameObject.gameObject.GetComponent<Ice_Drill>();
+            if (iceDrill != null) {
+                Debug.Log("axe hits an enemy");
+                iceDrill.takeDamage((int)_axeDamage);
+            }
+
+            
+        }
+        
     }
 
     /// <summary>
@@ -93,6 +108,39 @@ public class Player_Axe : MonoBehaviour
 
         return hitList;
     }
+
+
+
+    private Collider2D[] AxeDetectEnemyHit()
+    {
+        Vector2 cornerA = _axe.transform.position - new Vector3(
+                (_axe.transform.lossyScale.x / 2) * Mathf.Cos(_axe.transform.eulerAngles.z * Mathf.Deg2Rad),
+                (_axe.transform.lossyScale.x / 2) * Mathf.Sin(_axe.transform.eulerAngles.z * Mathf.Deg2Rad),
+                0
+            )
+            - new Vector3(
+                -(_axe.transform.lossyScale.y / 2) * Mathf.Sin(_axe.transform.eulerAngles.z * Mathf.Deg2Rad),
+                (_axe.transform.lossyScale.y / 2) * Mathf.Cos(_axe.transform.eulerAngles.z * Mathf.Deg2Rad),
+                0
+            );
+        Vector2 cornerB = _axe.transform.position + new Vector3(
+                (_axe.transform.lossyScale.x / 2) * Mathf.Cos(_axe.transform.eulerAngles.z * Mathf.Deg2Rad),
+                (_axe.transform.lossyScale.x / 2) * Mathf.Sin(_axe.transform.eulerAngles.z * Mathf.Deg2Rad),
+                0
+            )
+            + new Vector3(
+                -(_axe.transform.lossyScale.y / 2) * Mathf.Sin(_axe.transform.eulerAngles.z * Mathf.Deg2Rad),
+                (_axe.transform.lossyScale.y / 2) * Mathf.Cos(_axe.transform.eulerAngles.z * Mathf.Deg2Rad),
+                0
+            );
+        Collider2D[] hitList = Physics2D.OverlapAreaAll(cornerA, cornerB, layerMask: 1 << 9);
+
+        if (_visualizerEnabled) StartCoroutine(VisualizeAxeHitbox(cornerA, cornerB));
+
+        return hitList;
+    }
+
+
 
     /// <summary>
     /// Prevents axe swing for given amount of seconds
