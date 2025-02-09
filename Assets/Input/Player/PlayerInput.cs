@@ -71,6 +71,33 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NumberKey"",
+                    ""type"": ""Value"",
+                    ""id"": ""44c89f71-a490-410e-bd15-3b6235c68306"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DropWood"",
+                    ""type"": ""Button"",
+                    ""id"": ""b346f410-2784-474b-bf30-4d5c706fff64"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropMetal"",
+                    ""type"": ""Button"",
+                    ""id"": ""bbc51f2d-f0a1-4711-9224-678b84eeceea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,7 +327,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -311,8 +338,129 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b759d685-611c-490f-8390-3ad3701e4569"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NumberKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4909c872-31c8-422c-ab95-ecb93373d75f"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=2)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NumberKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""281a424e-7bad-4f25-b2c1-b9517680cb2f"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=3)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NumberKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""639d110b-8dc5-410c-9060-3e5bcfec033b"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=4)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NumberKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8d2be0d-c562-4fea-9937-5825c9bfd193"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=5)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NumberKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44de0ab9-26d5-4999-bc81-c4492615e823"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=6)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NumberKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b249c973-c648-43af-9162-34733a1e96dc"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=7)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NumberKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""975e661a-a178-4b15-af32-d256832b42fd"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=8)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NumberKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6a0eef8-f2f7-467e-be81-2323c739efe2"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": ""Scale(factor=9)"",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""NumberKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a7dad69-14dc-487f-91a1-3b69aa66557f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropWood"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f51af75b-de20-46f2-b661-707b6299c872"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropMetal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -905,6 +1053,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Interact1 = m_Player.FindAction("Interact1", throwIfNotFound: true);
         m_Player_Interact2 = m_Player.FindAction("Interact2", throwIfNotFound: true);
+        m_Player_NumberKey = m_Player.FindAction("NumberKey", throwIfNotFound: true);
+        m_Player_DropWood = m_Player.FindAction("DropWood", throwIfNotFound: true);
+        m_Player_DropMetal = m_Player.FindAction("DropMetal", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -983,6 +1134,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Interact1;
     private readonly InputAction m_Player_Interact2;
+    private readonly InputAction m_Player_NumberKey;
+    private readonly InputAction m_Player_DropWood;
+    private readonly InputAction m_Player_DropMetal;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -992,6 +1146,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Interact1 => m_Wrapper.m_Player_Interact1;
         public InputAction @Interact2 => m_Wrapper.m_Player_Interact2;
+        public InputAction @NumberKey => m_Wrapper.m_Player_NumberKey;
+        public InputAction @DropWood => m_Wrapper.m_Player_DropWood;
+        public InputAction @DropMetal => m_Wrapper.m_Player_DropMetal;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1016,6 +1173,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact2.started += instance.OnInteract2;
             @Interact2.performed += instance.OnInteract2;
             @Interact2.canceled += instance.OnInteract2;
+            @NumberKey.started += instance.OnNumberKey;
+            @NumberKey.performed += instance.OnNumberKey;
+            @NumberKey.canceled += instance.OnNumberKey;
+            @DropWood.started += instance.OnDropWood;
+            @DropWood.performed += instance.OnDropWood;
+            @DropWood.canceled += instance.OnDropWood;
+            @DropMetal.started += instance.OnDropMetal;
+            @DropMetal.performed += instance.OnDropMetal;
+            @DropMetal.canceled += instance.OnDropMetal;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1035,6 +1201,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Interact2.started -= instance.OnInteract2;
             @Interact2.performed -= instance.OnInteract2;
             @Interact2.canceled -= instance.OnInteract2;
+            @NumberKey.started -= instance.OnNumberKey;
+            @NumberKey.performed -= instance.OnNumberKey;
+            @NumberKey.canceled -= instance.OnNumberKey;
+            @DropWood.started -= instance.OnDropWood;
+            @DropWood.performed -= instance.OnDropWood;
+            @DropWood.canceled -= instance.OnDropWood;
+            @DropMetal.started -= instance.OnDropMetal;
+            @DropMetal.performed -= instance.OnDropMetal;
+            @DropMetal.canceled -= instance.OnDropMetal;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1222,6 +1397,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnFire(InputAction.CallbackContext context);
         void OnInteract1(InputAction.CallbackContext context);
         void OnInteract2(InputAction.CallbackContext context);
+        void OnNumberKey(InputAction.CallbackContext context);
+        void OnDropWood(InputAction.CallbackContext context);
+        void OnDropMetal(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

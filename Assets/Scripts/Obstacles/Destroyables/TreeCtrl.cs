@@ -9,30 +9,8 @@ public class TreeCtrl : Destroyable
     public override float maxHealth => 50f;
     public int woodAmnt = 4;
 
-    [SerializeField] WoodPileCtrl _woodDropPrefab; // might be temp
+    
 
-    public static ObjectPool<WoodPileCtrl> woodDropPool = null;
-
-    protected override void Awake()
-    {
-        base.Awake();
-        if (woodDropPool == null)
-        {
-            woodDropPool = new ObjectPool<WoodPileCtrl>(() =>
-            {
-                return Instantiate(_woodDropPrefab);
-            },
-            woodDrop =>
-            {
-                woodDrop.gameObject.SetActive(true);
-            },
-            woodDrop =>
-            {
-                woodDrop.gameObject.SetActive(false);
-            },
-            null, true, 10);
-        }
-    }
 
     public override void TakeDamage(float damage)
     {
@@ -58,11 +36,11 @@ public class TreeCtrl : Destroyable
 
     private void GiveWood()
     {
-        if (!PlayerManager.Instance.Inventory_DeltaResourceCheck(ResourceType.Wood, woodAmnt))
+        if (!PlayerManager.Instance.Inventory_DeltaResourceCheck(ResourceType.Wood, woodAmnt, GridManager.Instance.GridToCenterOfGridWorldPos(pos)))
         {
             int amntCanAdd = PlayerManager.Instance.carryCapacity - PlayerManager.Instance.Inventory_GetTotalCarried();
             int remaining = woodAmnt - amntCanAdd;
-            if (!PlayerManager.Instance.Inventory_DeltaResourceCheck(ResourceType.Wood, amntCanAdd))
+            if (!PlayerManager.Instance.Inventory_DeltaResourceCheck(ResourceType.Wood, amntCanAdd, GridManager.Instance.GridToCenterOfGridWorldPos(pos)))
             {
                 throw new System.Exception("Tree wood give mechanism fail");
             }
@@ -75,7 +53,8 @@ public class TreeCtrl : Destroyable
 
     private void DropWood()
     {
-        WoodPileCtrl woodDrop = woodDropPool.Get();
+        PileCtrl woodDrop = GameManager.Instance.pilePool.Get();
+        woodDrop.Setup(ResourceType.Wood, 1);
         Vector2 gridWorldPos = GridManager.Instance.GridToWorldPos(pos);
         float gridSize = GridManager.Instance.gridConfig.gridSquareSize;
         woodDrop.transform.position = new Vector3(UnityEngine.Random.Range(gridWorldPos.x, gridWorldPos.x + gridSize), UnityEngine.Random.Range(gridWorldPos.y, gridWorldPos.y + gridSize), 0);

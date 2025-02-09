@@ -3,16 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class GameManager : MonoSingleton<GameManager>
 {
     public GameConfig gameConfig;
     public PlayerInput playerInput;
+    public ObjectPool<PileCtrl> pilePool = null;
+
+    [SerializeField] private PileCtrl _pilePrefab;
 
     /// <summary>
     /// Current ambient temperature
     /// </summary>
     public float ambientTemperature;
+
+    public bool inputReady = false;
 
     public override void Init()
     {
@@ -20,6 +26,24 @@ public class GameManager : MonoSingleton<GameManager>
 
         InitPlayerInput();
         StartCoroutine(WaitForGridManager());
+        InitPilePool();
+    }
+
+    private void InitPilePool()
+    {
+        pilePool = new ObjectPool<PileCtrl>(() =>
+        {
+            return Instantiate(_pilePrefab);
+        },
+            pile =>
+            {
+                pile.gameObject.SetActive(true);
+            },
+            pile =>
+            {
+                pile.gameObject.SetActive(false);
+            },
+            null, true, 10);
     }
 
     private IEnumerator WaitForGridManager()
@@ -39,5 +63,6 @@ public class GameManager : MonoSingleton<GameManager>
     {
         playerInput = new PlayerInput();
         playerInput.Player.Enable(); // Enabled by default
+        inputReady = true;
     }
 }

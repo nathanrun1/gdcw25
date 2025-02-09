@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4500705c5687d934482a3d650c9a954d, type: 3}
-  m_Name: ObstacleData
+  m_Script: {fileID: 11500000, guid: e703425abe5aabd41a96d8fcf74d3bd3, type: 3}
+  m_Name: BuildingList
   m_EditorClassIdentifier: 
-  obstacleDict:
-  - {fileID: 7807244537061857567, guid: 7ca8e665485a8ac42bea63f04b135d51, type: 3}
-  - {fileID: 7861524431506352035, guid: d3eede94a0d0841f6ad777ceb05c8a26, type: 3}
+  builds:
+  - {fileID: 11400000, guid: e9b12a9087e04c449b140638da9a4d1c, type: 2}

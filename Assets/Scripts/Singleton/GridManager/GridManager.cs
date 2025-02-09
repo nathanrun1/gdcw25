@@ -31,16 +31,22 @@ public class GridManager : MonoSingleton<GridManager>
     public Dictionary<Vector2Int, GridSquare> gridData = new Dictionary<Vector2Int, GridSquare>();
 
     [SerializeField] private SpriteRenderer _gridVisualizerRenderer;
+    [SerializeField] private bool _visualizeGrid = false;
 
     public static bool IsInitialized { get; private set; } = false;
 
     public override void Init()
     {
         Debug.Log(WorldToGridPos(new Vector2(15.4f, 27.1f)));
-        _gridVisualizerRenderer.material.SetFloat("_GridSize", gridConfig.gridSquareSize);
-        _gridVisualizerRenderer.gameObject.SetActive(true);
         GridManager.Instance.GenerateGrid(new Vector2Int(0, 0), 100);
         IsInitialized = true;
+        if (_visualizeGrid) VisualizeGrid();
+    }
+
+    private void VisualizeGrid()
+    {
+        _gridVisualizerRenderer.material.SetFloat("_GridSize", gridConfig.gridSquareSize);
+        _gridVisualizerRenderer.gameObject.SetActive(true);
     }
 
     /// <summary>

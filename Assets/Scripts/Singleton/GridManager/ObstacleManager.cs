@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class ObstacleManager : MonoSingleton<ObstacleManager>
 {
-    [SerializeField] ObstacleData obstacleData;
+    public ObstacleData obstacleData;
 
     /// <summary>
     /// Returns whether or not grid position is occupied by an obstacle
@@ -50,7 +51,8 @@ public class ObstacleManager : MonoSingleton<ObstacleManager>
 
         if (IsOccupied(pos)) return; // Already occupied
 
-        Obstacle newObstacle = Instantiate(obstacleData.obstacleDict[obstacleId]);
+        Obstacle newObstacle = (Obstacle)PrefabUtility.InstantiatePrefab(obstacleData.obstacleDict[obstacleId]);
+        //Obstacle newObstacle = Instantiate(obstacleData.obstacleDict[obstacleId]);
         newObstacle.id = obstacleId;
         newObstacle.pos = pos;
 

@@ -130,6 +130,8 @@ MonoBehaviour:
   PlayerGridSquareTemp: 0
   carryCapacity: 20
   _woodCount: {fileID: 0}
+  _rscGainUIPrefab: {fileID: 0}
+  _mainCanvas: {fileID: 0}
   PlayerTemperature: 25
 --- !u!1 &2107895208334119593
 GameObject:
@@ -251,9 +253,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0013581514, y: 0}
+  m_Offset: {x: 0.0011945367, y: 0}
   serializedVersion: 2
-  m_Radius: 0.13691139
+  m_Radius: 0.21476775
 --- !u!1 &2319113316254569932
 GameObject:
   m_ObjectHideFlags: 0

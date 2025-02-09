@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 /// <summary>
@@ -13,6 +14,7 @@ public partial class PlayerManager : MonoSingleton<PlayerManager>
 
     public Vector2 PlayerWorldPosition = new Vector2();
     public Vector2Int PlayerGridPosition = new Vector2Int();
+    public Vector2 PlayerMouseDirection = new Vector2();
 
     // temporary
     public float PlayerGridSquareTemp = 0;
@@ -35,7 +37,8 @@ public partial class PlayerManager : MonoSingleton<PlayerManager>
             PlayerGridSquareTemp = GridManager.Instance.GetGridSquareAt(PlayerGridPosition).Temperature;
             UpdateTemperature(Time.deltaTime);
         }
-        
+        //Vector2 diff = Camera.main.ScreenToWorldPoint(mousePos) - new Vector2(transform.position.x, transform.position.y); // diff from player pos
+        PlayerMouseDirection = (Mouse.current.position.ReadValue() - new Vector2(Screen.width / 2, Screen.height / 2)).normalized;
     }
 
     private PlayerManager() { }
