@@ -165,4 +165,4 @@ MonoBehaviour:
   pos: {x: 0, y: 0}
   currentHealth: 0
   woodAmnt: 4
-  _woodDropPrefab: {fileID: -8381633508457590673, guid: 1df5a0c8d73b87b48a589c0f43e1df9b, type: 3}
+  _woodDropPrefab: {fileID: -8381633508457590673, guid: ad83f586f09f4444bb427824b56af1a7, type: 3}
