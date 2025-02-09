@@ -24,6 +24,6 @@ public class Ice_Drill_Behaviour : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 targetPositionDelta = PlayerManager.Instance.PlayerWorldPosition - new Vector2(transform.position.x, transform.position.y);
-        GetComponent<Rigidbody2D>().velocity = targetPositionDelta * _moveSpeed * Time.fixedDeltaTime;
+        GetComponent<Rigidbody2D>().velocity = targetPositionDelta.normalized * _moveSpeed * Time.fixedDeltaTime;
     }
 }
