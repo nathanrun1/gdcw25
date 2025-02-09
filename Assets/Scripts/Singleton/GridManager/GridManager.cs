@@ -16,6 +16,10 @@ public class GridSquare
     /// Temperature of this grid square
     /// </summary>
     public float Temperature { get => GameManager.Instance.ambientTemperature + temperatureDelta; }
+    /// <summary>
+    /// Obstacle placed on this square
+    /// </summary>
+    public Obstacle obstacle = null;
 }
 
 /// <summary>
@@ -28,11 +32,15 @@ public class GridManager : MonoSingleton<GridManager>
 
     [SerializeField] private SpriteRenderer _gridVisualizerRenderer;
 
+    public static bool IsInitialized { get; private set; } = false;
+
     public override void Init()
     {
-        Debug.Log(WorldToGridPos(15.4f, 27.1f));
+        Debug.Log(WorldToGridPos(new Vector2(15.4f, 27.1f)));
         _gridVisualizerRenderer.material.SetFloat("_GridSize", gridConfig.gridSquareSize);
         _gridVisualizerRenderer.gameObject.SetActive(true);
+        GridManager.Instance.GenerateGrid(new Vector2Int(0, 0), 100);
+        IsInitialized = true;
     }
 
     /// <summary>
@@ -65,22 +73,6 @@ public class GridManager : MonoSingleton<GridManager>
     }
 
     /// <summary>
-    /// Returns grid square data at specified grid position
-    /// </summary>
-    public GridSquare GetGridSquareAt(int x, int y)
-    {
-        return GetGridSquareAt(new Vector2Int(x, y));
-    }
-
-    /// <summary>
-    /// Returns which grid square a world position resides in
-    /// </summary>
-    public Vector2Int WorldToGridPos(float x, float y)
-    {
-        return WorldToGridPos(new Vector2(x, y));
-    }
-
-    /// <summary>
     /// Returns which grid square a world position resides in
     /// </summary>
     public Vector2Int WorldToGridPos(Vector2 worldPos)
@@ -89,5 +81,24 @@ public class GridManager : MonoSingleton<GridManager>
             (int)Mathf.Floor(worldPos.x / gridConfig.gridSquareSize), 
             (int)Mathf.Floor(worldPos.y / gridConfig.gridSquareSize)
             );
+    }
+
+    /// <summary>
+    /// Returns world position of bottom left corner of grid square given by grid position
+    /// </summary>
+    public Vector2 GridToWorldPos(Vector2Int gridPos)
+    {
+        return new Vector2(
+            gridPos.x * gridConfig.gridSquareSize,
+            gridPos.y * gridConfig.gridSquareSize
+            );
+    }
+
+    /// <summary>
+    /// Returns world position of center of grid square given by grid position
+    /// </summary>
+    public Vector2 GridToCenterOfGridWorldPos(Vector2Int gridPos)
+    {
+        return GridToWorldPos(gridPos) + Vector2.one * (gridConfig.gridSquareSize / 2);
     }
 }

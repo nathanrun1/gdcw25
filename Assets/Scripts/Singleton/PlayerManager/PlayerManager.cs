@@ -21,16 +21,21 @@ public partial class PlayerManager : MonoSingleton<PlayerManager>
     public override void Init()
     {
         InitTemperature();
+        Inventory_InitInventory();
     }
 
     private void Update()
     {
         PlayerWorldPosition = transform.position;
-        PlayerGridPosition = GridManager.Instance.WorldToGridPos(PlayerWorldPosition);
-        //Debug.Log($"Player world pos: {PlayerWorldPosition}\nPlayer grid pos: {PlayerGridPosition}");
+        if (GridManager.IsInitialized)
+        {
+            PlayerGridPosition = GridManager.Instance.WorldToGridPos(PlayerWorldPosition);
+            //Debug.Log($"Player world pos: {PlayerWorldPosition}\nPlayer grid pos: {PlayerGridPosition}");
 
-        PlayerGridSquareTemp = GridManager.Instance.GetGridSquareAt(PlayerGridPosition).Temperature;
-        UpdateTemperature(Time.deltaTime);
+            PlayerGridSquareTemp = GridManager.Instance.GetGridSquareAt(PlayerGridPosition).Temperature;
+            UpdateTemperature(Time.deltaTime);
+        }
+        
     }
 
     private PlayerManager() { }
