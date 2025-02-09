@@ -26,7 +26,7 @@ public class SpawnEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnWaveInfo.Add(1, new Tuple<float, int>(60f, 10));
+        spawnWaveInfo.Add(1, new Tuple<float, int>(5f, 10));
         spawnWaveInfo.Add(2, new Tuple<float, int>(60f, 20));
         spawnWaveInfo.Add(3, new Tuple<float, int>(60f, 35));
         spawnWaveInfo.Add(4, new Tuple<float, int>(60f, 65));
@@ -67,14 +67,18 @@ public class SpawnEnemy : MonoBehaviour
         Vector2 spawnPosition;
 
         for (int i = 0; i < amount; i++) {
+            int attempts = 4;
             do {
                 degree = (float)(rng.NextDouble() * 360);
                 distance = playerSafeZoneRadius + (float)(rng.NextDouble() * spawnZoneWidth);
                 spawnPosition = new Vector2(transform.position.x, transform.position.y)
                 + new Vector2(Mathf.Cos(degree)*distance, Mathf.Sin(degree)*distance);
+                attempts -= 1;
+                if (attempts == 0) break;
             } while (!checkPosValidity(spawnPosition));
-
+            if (attempts == 0) continue;
             GameObject newEnemy = (GameObject)PrefabUtility.InstantiatePrefab(enemyType);
+            Debug.Log("new enemy" + newEnemy);
             newEnemy.transform.position = spawnPosition;
             newEnemy.transform.rotation = Quaternion.identity;
         }

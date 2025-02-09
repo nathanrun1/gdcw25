@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e703425abe5aabd41a96d8fcf74d3bd3, type: 3}
-  m_Name: BuildingList
+  m_Script: {fileID: 11500000, guid: 09dceab61b14a7a46b68b7f8da6b9279, type: 3}
+  m_Name: Crossbow
   m_EditorClassIdentifier: 
-  builds:
-  - {fileID: 11400000, guid: e9b12a9087e04c449b140638da9a4d1c, type: 2}
-  - {fileID: 11400000, guid: 775ecd28e7b87df48b53579715a0ce1e, type: 2}
+  obstacleId: 2
+  buildingName: Crossbow
+  cost: 0500000005000000

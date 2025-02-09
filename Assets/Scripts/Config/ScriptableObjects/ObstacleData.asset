@@ -15,3 +15,4 @@ MonoBehaviour:
   obstacleDict:
   - {fileID: 7807244537061857567, guid: 7ca8e665485a8ac42bea63f04b135d51, type: 3}
   - {fileID: 5886075488594833772, guid: 9117a040bf7bf4144b9ff6ecb8803296, type: 3}
+  - {fileID: -4970148382563133061, guid: 4426e5c72a8a2114bbd85841a3605e21, type: 3}

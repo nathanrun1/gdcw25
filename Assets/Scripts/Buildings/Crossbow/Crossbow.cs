@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class Crossbow : MonoBehaviour
+public class Crossbow : Building
 {
 
     private GameObject crossbowBase;
@@ -24,6 +24,7 @@ public class Crossbow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         crossbowBase = transform.Find("Crossbow_Base").gameObject;
         crossbowBarrel = transform.Find("Crossbow_Barrel").gameObject;
         coolDownTimer = coolDown;
@@ -46,6 +47,7 @@ public class Crossbow : MonoBehaviour
                 coolDownTimer -= Time.deltaTime;
             }
         }
+        Debug.Log("crossbow temp: " + curTemperature);
     }
 
     private GameObject getClosestEnemyInRange() {

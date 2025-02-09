@@ -64,12 +64,12 @@ public class BuildManager : MonoSingleton<BuildManager>
         _selectedBuild = buildId;
         int obstacleId = buildingList.builds[buildId].obstacleId;
         GameObject preview = Instantiate(ObstacleManager.Instance.obstacleData.obstacleDict[obstacleId]).gameObject;
-        foreach (Component comp in preview.GetComponents<Component>())
+        foreach (Component comp in preview.GetComponentsInChildren<Component>())
         {
             if (comp is Transform || comp is SpriteRenderer) continue;
             Destroy(comp);
         }
-        curPreview = preview.GetComponent<SpriteRenderer>();
+        curPreview = preview.GetComponentInChildren<SpriteRenderer>();
         if (curPreview != null) {
             curPreview.enabled = true;
             curPreview.material = _transparentMat;

@@ -73,9 +73,9 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _GridSize: 0.6
-    - _MaxTemp: 30
+    - _MaxTemp: 1
     - _Metallic: 0
-    - _MinTemp: -30
+    - _MinTemp: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _OffsetX: 0
@@ -84,7 +84,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Transparency: 0.21
+    - _Transparency: 0.2
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
